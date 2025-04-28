@@ -1,5 +1,5 @@
 public class HashTable<K, V> {
-
+    // A node for storing a key-value pair and links to the next element of the chain
     public class HashNode<K, V> {
         K key;
         V value;
@@ -32,10 +32,12 @@ public class HashTable<K, V> {
         this.size = 0;
     }
 
+    // Hashing function: returns the index of the chain
     private int toHash(K key) {
         return Math.abs(key.hashCode()) % chains;
     }
 
+    // Adds a new key-value pair to the table
     public void put(K key, V value) {
         int index = toHash(key);
         HashNode<K, V> head = chainArray[index];
@@ -54,6 +56,7 @@ public class HashTable<K, V> {
         size++;
     }
 
+    // Returns the value by key
     public V get(K key) {
         int index = toHash(key);
         HashNode<K, V> head = chainArray[index];
@@ -67,6 +70,7 @@ public class HashTable<K, V> {
         return null;
     }
 
+    // Deletes an element by key and returns its value
     public V remove(K key) {
         int index = toHash(key);
         HashNode<K, V> head = chainArray[index];
@@ -89,6 +93,7 @@ public class HashTable<K, V> {
         return null;
     }
 
+    // Checks whether the value exists in the table
     public boolean contains(V value) {
         for (int i = 0; i < chains; i++) {
             HashNode<K, V> head = chainArray[i];
@@ -102,6 +107,7 @@ public class HashTable<K, V> {
         return false;
     }
 
+    // Returns the key by value
     public K getKey(V value) {
         for (int i = 0; i < chains; i++) {
             HashNode<K, V> head = chainArray[i];
@@ -115,14 +121,17 @@ public class HashTable<K, V> {
         return null;
     }
 
+    // Returns the number of elements
     public int size() {
         return size;
     }
 
+    // Checks if the table is empty
     public boolean isEmpty() {
         return size == 0;
     }
 
+    // Prints all the elements of the table
     public void print() {
         for (int i = 0; i < chains; i++) {
             System.out.print("Bucket " + i + ": ");

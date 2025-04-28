@@ -33,6 +33,7 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    // Adds an element to the tree
     public void put(K key, V val) {
         if (root == null) {
             root = new Node(key, val);
@@ -64,6 +65,7 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    // Gets the value by key
     public V get(K key) {
         Node current = root;
         while (current != null) {
@@ -75,6 +77,7 @@ public class BST<K extends Comparable<K>, V> {
         return null;
     }
 
+    // Deletes an item by key
     public void delete(K key) {
         Node parent = null;
         Node current = root;
@@ -119,10 +122,12 @@ public class BST<K extends Comparable<K>, V> {
         }
     }
 
+    // Returns the number of elements
     public int size() {
         return size;
     }
 
+    // Iterator: traverses the in-order tree without recursion
     public Iterable<Entry<K, V>> iterator() {
         return new Iterable<Entry<K, V>>() {
             public Iterator<Entry<K, V>> iterator() {

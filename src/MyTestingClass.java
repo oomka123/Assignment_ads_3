@@ -7,6 +7,7 @@ public class MyTestingClass {
         this.name = name;
     }
 
+    // Redefining equals to correctly compare two objects
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -15,6 +16,7 @@ public class MyTestingClass {
         return id == that.id && name.equals(that.name);
     }
 
+    // Native hashCode implementation (without using Objects.hash)
     @Override
     public int hashCode() {
         int hash = 17;
