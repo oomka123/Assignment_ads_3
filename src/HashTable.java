@@ -135,4 +135,17 @@ public class HashTable<K, V> {
         }
     }
 
+    public int[] getBucketSizes() {
+        int[] sizes = new int[chains];
+        for (int i = 0; i < chains; i++) {
+            HashNode<K, V> head = chainArray[i];
+            while (head != null) {
+                sizes[i]++;
+                head = head.next;
+            }
+        }
+        return sizes;
+    }
+
+
 }
